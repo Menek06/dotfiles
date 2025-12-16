@@ -1,0 +1,84 @@
+{
+	"layer": "top",
+	"height": 32,
+	"spacing": 1,
+	"modules-left": ["hyprland/workspaces"],
+	"modules-center": ["hyprland/window"],
+	"modules-right": ["tray", "pulseaudio", "battery", "temperature", "cpu", "memory", "clock"],
+	"hyprland/window": {"separate-outputs": true},
+	"hyprland/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"on-click": "exec"
+	},
+
+	"tray": {
+		"icon-size": 20,
+		"spacing": 10
+	},
+
+	"pulseaudio": {
+        	"format": "{icon}  {volume}%",
+        	"format-muted": "󰖁",
+		"format-icons": { "default": ["", "", "󰕾"] },
+		"on-click": "pavucontrol"
+	},
+
+	"battery": {
+        	"states": {"warning": 20},
+        	"format": "{icon} {capacity}%",
+        	"format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+        	"format-charging": "󰂄 {capacity}% capacity",
+        	"format-warning": "󰂃 {capacity}% capacity",
+		"tooltip-format": "{capacity}% {time} {health} "
+    	},
+
+//	"network": {
+  //      	"format-wifi": "󰤨",
+    //    	"format-disconnected": "󰤭",
+//		"tooltip-format": "Connected to {essid}",
+//		"on-click": "hyprctl dispatch exec '[float]' '$TERMINAL -e nmtui'"
+  //  	},
+
+	"temperature": {
+		"thermal-zone": "/sys/class/hwmon/hwmon3/temp1_input",
+		"format": "{icon} {temperatureC}°C",
+    		"format-icons": ["", "", ""],
+    		"critical-threshold": 80 
+	},
+ 
+	"cpu": {
+		"format": " {usage}% ",
+		"interval": 5,
+		"tooltip-format": " {avg_frequency} GHz",
+	},
+
+	"memory": {
+		"format": " {percentage}% ",
+		"interval": 1,
+		"tooltip-format": "{used} GB"
+
+	},
+
+	"clock": {
+		"format": " {:%H:%M:%S}",
+		"format-alt": "{:%A, %B %d, %Y (%R)}",
+		"interval": 1,
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+		"mode"          : "year",
+		"mode-mon-col"  : 3,
+		"weeks-pos"     : "right",
+		"on-scroll"     : 1,
+		"on-click-right": "mode",
+		"format": {
+			"months":     "<span color='#ffead3'><b>{}</b></span>",
+			"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+			"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+			"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+			"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+		}
+	},
+	}
+
+}
